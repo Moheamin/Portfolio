@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@layer base {
+  html,
+  body {
+    font-family: "var(--font-inter)", sans-serif;
+    /* This ensures it maps to your variable if using Next.js fonts */
+    font-feature-settings: "overline" 0;
+  }
+}
+
+:root {
+  --backgroundColor: #0a0a0a;
+  --fontColor: #f5f5f5;
+  --fontColor2: #a1a1a1;
+  --contrastColor: #00bcd4;
+}
