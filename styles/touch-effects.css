@@ -1,0 +1,69 @@
+/* Touch effects for mobile users */
+@media (hover: none) and (pointer: coarse) {
+  /* HeroSection image touch effect */
+  .hero-image.touch-active img,
+  .hero-image.touch-active > div {
+    filter: grayscale(0%);
+  }
+
+  /* ProjectsSection image touch effect */
+  .project-card.touch-active .project-image img {
+    transform: scale(1.1);
+    filter: grayscale(0%) blur(0);
+    opacity: 1;
+  }
+
+  .project-card.touch-active .project-soon {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  .project-card.touch-active {
+    border-color: rgb(0 188 212 / 0.3);
+    box-shadow: 0 0 30px rgba(0, 188, 212, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .project-card.touch-active h3 {
+    color: var(--contrastColor, #00bcd4);
+  }
+
+  .project-card.touch-active .project-arrow {
+    color: var(--contrastColor, #00bcd4);
+    transform: translateX(4px) translateY(-4px);
+  }
+}
+
+/* Fallback for devices that support both hover and touch */
+@media (hover: hover) {
+  .hero-image.touch-active img,
+  .hero-image.touch-active > div {
+    filter: grayscale(0%);
+  }
+
+  .project-card.touch-active .project-image img {
+    transform: scale(1.1);
+    filter: grayscale(0%) blur(0);
+    opacity: 1;
+  }
+
+  .project-card.touch-active .project-soon {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  .project-card.touch-active {
+    border-color: rgb(0 188 212 / 0.3);
+    box-shadow: 0 0 30px rgba(0, 188, 212, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .project-card.touch-active h3 {
+    color: var(--contrastColor, #00bcd4);
+  }
+
+  .project-card.touch-active .project-arrow {
+    color: var(--contrastColor, #00bcd4);
+    transform: translateX(4px) translateY(-4px);
+  }
+}

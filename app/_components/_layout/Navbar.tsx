@@ -5,36 +5,52 @@ import Link from "next/link";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("hero");
+  const SECTIONS = ["hero", "about", "projects", "skills", "contact"];
 
   useEffect(() => {
-    const sections = ["hero", "about", "projects", "skills", "contact"];
+    if (typeof window === "undefined") return;
+
+    let ticking = false;
+
+    const navHeight = 80;
+    let lastSection = "hero";
 
     const handleScroll = () => {
-      let currentSection = "hero";
-      const navHeight = 80; // Approximate navbar height
+      if (ticking) return;
 
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
-        if (!element) continue;
+      ticking = true;
 
-        const rect = element.getBoundingClientRect();
+      requestAnimationFrame(() => {
+        let currentSection = lastSection;
 
-        // Check if section is in viewport or above it
-        if (rect.top <= navHeight + 200) {
-          currentSection = sectionId;
-        } else {
-          break; // Stop checking once we find a section below viewport
+        for (const id of SECTIONS) {
+          const el = document.getElementById(id);
+          if (!el) continue;
+
+          const rect = el.getBoundingClientRect();
+
+          if (rect.top <= navHeight + 200) {
+            currentSection = id;
+          } else {
+            break;
+          }
         }
-      }
 
-      setActiveSection(currentSection);
-      window.history.replaceState(null, "", `#${currentSection}`);
+        if (currentSection !== lastSection) {
+          lastSection = currentSection;
+          setActiveSection(currentSection);
+
+          // Update URL safely (no history spam)
+          window.history.replaceState(null, "", `#${currentSection}`);
+        }
+
+        ticking = false;
+      });
     };
 
-    // Initial check
+    // Initial sync
     handleScroll();
 
-    // Listen to scroll events
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
 
@@ -45,10 +61,14 @@ export default function Navbar() {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    // iOS-safe scrolling
+    el.scrollIntoView({
+      block: "start",
+      behavior: "auto", // DO NOT use "smooth" on iOS
+    });
   };
 
   return (

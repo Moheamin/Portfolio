@@ -16,6 +16,7 @@ export default function ImageWithFallback({
   alt,
   priority = false,
   className,
+  sizes,
   ...rest
 }: ImageWithFallbackProps) {
   const [hasError, setHasError] = useState(false);
@@ -39,7 +40,7 @@ export default function ImageWithFallback({
       alt={alt ?? ""}
       className={className}
       fill
-      sizes="100vw"
+      sizes={sizes ? sizes : "100vw"}
       priority={priority}
       fetchPriority={priority ? "high" : "auto"}
       onError={() => setHasError(true)}

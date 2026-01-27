@@ -85,6 +85,7 @@ export function ProjectsSection() {
                   <ImageWithFallback
                     src={project.imageUrl}
                     alt={project.title}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="w-full h-full object-cover grayscale opacity-50 blur-sm 
                  transition-all duration-700 ease-out transform-gpu
                  group-hover:scale-110 group-hover:grayscale-0 group-hover:blur-none group-hover:opacity-100"
