@@ -3,6 +3,7 @@ import Navbar from "@/app/_components/_layout/Navbar";
 import { inter } from "@/app/_lib/action";
 import { ReactNode } from "react";
 import { Metadata } from "next";
+import type { Viewport } from "next";
 import "./styles/globals.css";
 
 type LayoutProps = {
@@ -15,7 +16,22 @@ export const metadata: Metadata = {
     template: "%s | Mohayman Rayed Hamed",
   },
   description:
-    "Front-End Developer specializing in modern, high-performance web applications. Crafting scalable, lightning-fast user experiences with thoughtful architecture and clean UI design.",
+    "Front-End Developer specializing in modern, high-performance web applications...",
+  keywords: [
+    "Front-End Developer",
+    "React Developer",
+    "Next.js Portfolio",
+    "UI/UX Design",
+  ], // Add this!
+  authors: [{ name: "Mohayman Rayed Hamed" }],
+  creator: "Mohayman Rayed Hamed",
+};
+
+// ADD THIS: The Viewport Export
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  // maximumScale: 1, // Optional: Prevents users from "stretching" the zoom on mobile
 };
 
 export default function Layout({ children }: LayoutProps) {
