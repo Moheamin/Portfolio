@@ -27,11 +27,9 @@ export const metadata: Metadata = {
   creator: "Mohayman Rayed Hamed",
 };
 
-// ADD THIS: The Viewport Export
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  // maximumScale: 1, // Optional: Prevents users from "stretching" the zoom on mobile
 };
 
 export default function Layout({ children }: LayoutProps) {
@@ -39,7 +37,8 @@ export default function Layout({ children }: LayoutProps) {
     <html lang="en" className={inter.variable}>
       <body className="bg-[var(--backgroundColor)] font-inter text-[var(--fontColor)]">
         <Navbar />
-        {children}
+
+        <main className="w-full overflow-x-hidden">{children}</main>
         <Footer />
       </body>
     </html>
