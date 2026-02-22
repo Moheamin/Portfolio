@@ -43,7 +43,7 @@ export function SkillsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           <div className="lg:w-1/4">
-            <div className="text-xs tracking-widest uppercase text-[var(--fontColor2)] sticky top-32">
+            <div className="text-[11px] tracking-widest uppercase text-[var(--fontColor2)] sticky top-32">
               Capabilities
             </div>
           </div>

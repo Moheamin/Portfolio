@@ -27,7 +27,7 @@ export function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Text Content */}
           <div className="order-2 lg:order-1">
-            <div className="text-xs tracking-widest uppercase text-[var(--fontColor2)] mb-10">
+            <div className="text-[11px] tracking-widest uppercase text-[var(--fontColor2)] mb-10">
               Front-End Developer
             </div>
             <h1 className="text-6xl md:text-7xl lg:text-8xl tracking-tight mb-10 leading-[0.95]">
@@ -36,38 +36,33 @@ export function HeroSection() {
               Rayed Hamed
             </h1>
             <p className="text-xl md:text-2xl text-[var(--fontColor)]/90 mb-8 max-w-xl leading-relaxed">
-              I craft web experiences that are built to last. Using the pinnacle
-              of modern frontend technology, I create scalable, lightning-fast
-              solutions where thoughtful architecture meets product-driven
-              design—all driven by a commitment to excellence and a love for
-              seamless user interfaces.
+              I craft enduring web experiences using modern frontend technology.
+              By merging the thoughtful architecture with product-driven design,
+              I build scalable, high-performance solutions defined by commitment
+              to excellence.
             </p>
             <p className="text-base text-[var(--fontColor2)] mb-14 max-w-lg leading-relaxed">
-              I leverage cutting-edge web frameworks to turn product vision into
-              seamless, high-performance systems. I pour my heart into every
-              detail, creating robust foundations that empower users and stand
-              the test of time.
+              I transform product visions into high-performance systems using
+              cutting-edge frameworks. Every detail is intentional, creating
+              foundations designed to empower users and stand the test of time.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={scrollToProjects}
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-[var(--fontColor)] text-[var(--backgroundColor)] hover:bg-[var(--contrastColor)] transition-all duration-300"
+                className="group cursor-pointer inline-flex items-center gap-2 px-8 py-4 bg-[var(--fontColor)] text-[var(--backgroundColor)] hover:bg-[var(--contrastColor)] transition-all duration-300"
               >
                 View Work
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </button>
               <button
                 onClick={scrollToContact}
-                className="group inline-flex items-center gap-2 px-8 py-4 border border-[var(--border)] text-[var(--fontColor)] hover:border-[var(--contrastColor)] transition-all duration-300"
+                className="group cursor-pointer inline-flex items-center gap-2 px-8 py-4 border border-[var(--border)] text-[var(--fontColor)] hover:border-[var(--contrastColor)] transition-all duration-300"
               >
                 <Mail className="w-4 h-4" />
                 Contact
               </button>
             </div>
           </div>
-
-          {/* Photo */}
-          {/* Photo */}
           <div className="order-1 lg:order-2">
             {/* Added 'group' here to trigger the hover */}
             <div className="group relative aspect-[3/4] max-w-md mx-auto lg:ml-auto overflow-hidden">

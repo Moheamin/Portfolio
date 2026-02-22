@@ -7,13 +7,13 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           <div className="lg:w-1/4">
-            <div className="text-xs tracking-widest uppercase text-[var(--fontColor2)] sticky top-32">
+            <div className="text-[10px] tracking-widest uppercase text-[var(--fontColor2)] sticky top-32">
               About
             </div>
           </div>
           <div className="lg:w-3/4 max-w-3xl">
             <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-12 leading-tight">
-              Engineering with pation,
+              Engineering with passion,
               <br />
               building for permanence.
             </h2>

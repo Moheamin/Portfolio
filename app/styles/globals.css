@@ -13,8 +13,15 @@
 }
 
 :root {
-  --backgroundColor: #0a0a0a;
+  --backgroundColor: #0c0c0e;
+
   --fontColor: #f5f5f5;
   --fontColor2: #a1a1a1;
   --contrastColor: #00bcd4;
+}
+
+
+::selection {
+  background-color: white;
+  color: black;
 }

@@ -1,0 +1,28 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="#0B0B0F"/>
+
+  <!-- Subtle border -->
+  <rect x="1" y="1" width="30" height="30" rx="5"
+        fill="none"
+        stroke="#1F1F26"
+        stroke-width="1"/>
+
+  <!-- Perfect optical centering -->
+  <text 
+    x="16"
+    y="17"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="Inter, system-ui, -apple-system, sans-serif"
+    font-size="13"
+    font-weight="700"
+    fill="#EAEAF0"
+    letter-spacing="0.5">
+    MR
+  </text>
+</svg>
+
+
+
+
