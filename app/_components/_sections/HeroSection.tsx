@@ -31,9 +31,9 @@ export function HeroSection() {
               Front-End Developer
             </div>
             <h1 className="text-6xl md:text-7xl lg:text-8xl tracking-tight mb-10 leading-[0.95]">
-              Mohayman
+              Muhaymen
               <br />
-              Rayed Hamed
+              Raed
             </h1>
             <p className="text-xl md:text-2xl text-[var(--fontColor)]/90 mb-8 max-w-xl leading-relaxed">
               I craft enduring web experiences using modern frontend technology.
@@ -68,7 +68,7 @@ export function HeroSection() {
             <div className="group relative aspect-[3/4] max-w-md mx-auto lg:ml-auto overflow-hidden">
               <ImageWithFallback
                 src="/myself.png"
-                alt="Mohayman Rayed Hamed"
+                alt="Muhaymen Raed"
                 // Added group-hover and !important to force the override
                 priority
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform-gpu"

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mohayman-rayed-portfolio.vercel.app/sitemap.xml
+Sitemap: https://muhaymen-raed-portfolio.vercel.app/sitemap.xml

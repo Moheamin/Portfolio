@@ -94,10 +94,12 @@ export function ProjectsSection() {
                   <ImageWithFallback
                     src={project.imageUrl}
                     alt={project.title}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="w-full h-full object-cover grayscale opacity-50 blur-sm 
-                   transition-all duration-700 ease-out transform-gpu
-                   group-hover:scale-105 group-hover:grayscale-0 group-hover:blur-none group-hover:opacity-100"
+                    sizes="100vw"
+                    className={`w-full h-full object-cover transition-all duration-700 ease-out transform-gpu group-hover:scale-105 group-hover:grayscale-0 group-hover:blur-none group-hover:opacity-100 ${
+                      project.isFinished
+                        ? "opacity-100"
+                        : "grayscale opacity-50 blur-sm"
+                    }`}
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent z-10" />
@@ -168,7 +170,9 @@ export function ProjectsSection() {
                         )}
 
                         <span className="relative z-10 text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--fontColor2)] group-hover/live:text-[var(--fontColor)] transition-colors duration-300">
-                          {project.isFinished ? "Live Demo" : "Coming Soon"}
+                          {project.isFinished
+                            ? "Visit the Website"
+                            : "Coming Soon"}
                         </span>
 
                         <div className="relative z-10 flex items-center justify-center">

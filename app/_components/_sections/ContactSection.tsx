@@ -54,7 +54,7 @@ export default function ContactSection() {
             </div>
             <div className="flex justify-center gap-8">
               <Link
-                href="https://github.com/Moheamin"
+                href="https://github.com/MuhaymenRaed"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex flex-col items-center gap-3 text-[var(--fontColor2)] hover:text-[var(--contrastColor)] transition-colors duration-300"
@@ -63,7 +63,7 @@ export default function ContactSection() {
                 <span className="text-sm">GitHub</span>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/moheaminrayed20"
+                href="https://www.linkedin.com/in/muhaymenraed"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex flex-col items-center gap-3 text-[var(--fontColor2)] hover:text-[var(--contrastColor)] transition-colors duration-300"
