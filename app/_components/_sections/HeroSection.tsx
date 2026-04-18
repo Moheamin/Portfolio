@@ -1,9 +1,24 @@
 "use client";
 
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Mail, Download, Monitor } from "lucide-react";
 import ImageWithFallback from "@/app/_components/_image/ImageWithFallback";
+import { useEffect, useState } from "react";
+import type { Translations, Locale } from "@/app/translations";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  t: Record<string, string>;
+  lang: string;
+}
+
+export function HeroSection({ t, lang }: HeroSectionProps) {
+  const [isWindows, setIsWindows] = useState(false);
+
+  useEffect(() => {
+    setIsWindows(
+      /Win/i.test(navigator.userAgent) &&
+        !/Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent),
+    );
+  }, []);
   const scrollToProjects = () => {
     const element = document.getElementById("projects");
     if (element) {
@@ -27,53 +42,78 @@ export function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Text Content */}
           <div className="order-2 lg:order-1">
-            <div className="text-[11px] tracking-widest uppercase text-[var(--fontColor2)] mb-10">
-              Front-End Developer
+            <div className="text-[11px] tracking-widest uppercase text-(--fontColor2) mb-10">
+              {t.subtitle}
             </div>
             <h1 className="text-6xl md:text-7xl lg:text-8xl tracking-tight mb-10 leading-[0.95]">
-              Muhaymen
+              {t.heading1}
               <br />
-              Raed
+              {t.heading2}
             </h1>
-            <p className="text-xl md:text-2xl text-[var(--fontColor)]/90 mb-8 max-w-xl leading-relaxed">
-              I craft enduring web experiences using modern frontend technology.
-              By merging the thoughtful architecture with product-driven design,
-              I build scalable, high-performance solutions defined by commitment
-              to excellence.
+            <p className="text-xl md:text-2xl text-(--fontColor)/90 mb-8 max-w-xl leading-relaxed">
+              {t.para1}
             </p>
-            <p className="text-base text-[var(--fontColor2)] mb-14 max-w-lg leading-relaxed">
-              I transform product visions into high-performance systems using
-              cutting-edge frameworks. Every detail is intentional, creating
-              foundations designed to empower users and stand the test of time.
+            <p className="text-base text-(--fontColor2) mb-14 max-w-lg leading-relaxed">
+              {t.para2}
             </p>
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={scrollToProjects}
-                className="group cursor-pointer inline-flex items-center gap-2 px-8 py-4 bg-[var(--fontColor)] text-[var(--backgroundColor)] hover:bg-[var(--contrastColor)] transition-all duration-300"
+                className="group cursor-pointer inline-flex items-center gap-2 px-8 py-4 bg-(--fontColor) text-(--backgroundColor) hover:bg-(--contrastColor) transition-all duration-300"
               >
-                View Work
+                {t.viewWork}
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </button>
               <button
                 onClick={scrollToContact}
-                className="group cursor-pointer inline-flex items-center gap-2 px-8 py-4 border border-[var(--border)] text-[var(--fontColor)] hover:border-[var(--contrastColor)] transition-all duration-300"
+                className="group cursor-pointer inline-flex items-center gap-2 px-8 py-4 border border-(--border) text-(--fontColor) hover:border-(--contrastColor) transition-all duration-300"
               >
                 <Mail className="w-4 h-4" />
-                Contact
+                {t.contact}
               </button>
             </div>
+
+            {/* Windows-only desktop app download */}
+            {isWindows && (
+              <div className="mt-10 pt-10 bord.rer-t border-(--fontColor2)/10">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-(--fontColor2)/50 mb-4 font-bold">
+                  {t.desktopLabel}
+                </p>
+                <a
+                  href="https://www.mediafire.com/file/afneaqkkcliz852/Portfolio-Setup.rar/file"
+                  target="_blank"
+                  className="group inline-flex items-center gap-4 p-4 border border-(--fontColor2)/15 hover:border-emerald-500/40 bg-(--fontColor2)/3 hover:bg-emerald-500/6 transition-all duration-500 hover:-translate-y-0.5"
+                >
+                  <div className="flex items-center justify-center w-9 h-9 border border-emerald-500/30 bg-emerald-500/10 shrink-0">
+                    <Monitor className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-sm font-medium text-(--fontColor) leading-none">
+                      {t.desktopTitle}
+                    </span>
+                    <span className="text-[11px] text-(--fontColor2)/60 leading-none">
+                      {t.desktopMeta}
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 pl-4">
+                    <Download className="w-4 h-4 text-emerald-400 group-hover:animate-bounce" />
+                    <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-400 group-hover:text-emerald-300 transition-colors">
+                      .exe
+                    </span>
+                  </div>
+                </a>
+              </div>
+            )}
           </div>
           <div className="order-1 lg:order-2">
-            {/* Added 'group' here to trigger the hover */}
             <div className="group relative aspect-[3/4] max-w-md mx-auto lg:ml-auto overflow-hidden">
               <ImageWithFallback
                 src="/myself.png"
                 alt="Muhaymen Raed"
-                // Added group-hover and !important to force the override
                 priority
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform-gpu"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40 pointer-events-none"></div>{" "}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40 pointer-events-none"></div>
             </div>
           </div>
         </div>

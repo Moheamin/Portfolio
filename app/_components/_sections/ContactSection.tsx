@@ -3,8 +3,13 @@
 import { Github, Linkedin, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import type { Translations } from "@/app/translations";
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  t: Record<string, string>;
+}
+
+export default function ContactSection({ t }: ContactSectionProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -33,13 +38,12 @@ export default function ContactSection() {
         <div className="max-w-7xl mx-auto ">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-5xl md:text-6xl lg:text-7xl tracking-tight mb-12 leading-tight">
-              Let's Shine
+              {t.heading1}
               <br />
-              Together
+              {t.heading2}
             </h2>
             <p className="text-xl text-[var(--fontColor2)] mb-16 leading-relaxed max-w-2xl mx-auto">
-              I'm open to new opportunities and interesting collaborations. If
-              you're working on something meaningful, let's talk.
+              {t.body}
             </p>
             <div className="space-y-8 mb-20">
               <Link

@@ -1,0 +1,18 @@
+export const projects = {
+  sideLabel: "Selected Work",
+  heading1: "Projects built to solve",
+  heading2: "real problems.",
+  challenge: "The Challenge",
+  solution: "The Solution",
+  impact: "Impact",
+  code: "Code",
+  design: "Design",
+  visitSite: "Visit the Website",
+  comingSoon: "Coming Soon",
+  soon: "soon...",
+  downloadExe: "Download .exe",
+  toastTitle: "Work in Progress",
+  toastMsgPre: "The live version of",
+  toastMsgSuf: "is currently being polished for production.",
+  toastClose: "Close",
+} as const;

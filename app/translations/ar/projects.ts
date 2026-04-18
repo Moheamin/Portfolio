@@ -1,0 +1,18 @@
+export const projects = {
+  sideLabel: "أعمال مختارة",
+  heading1: "مشاريع بُنيت لحل",
+  heading2: "مشكلات حقيقية.",
+  challenge: "التحدي",
+  solution: "الحل",
+  impact: "التأثير",
+  code: "الكود",
+  design: "التصميم",
+  visitSite: "زيارة الموقع",
+  comingSoon: "قريبًا",
+  soon: "قريبًا...",
+  downloadExe: "تحميل .exe",
+  toastTitle: "قيد الإنشاء",
+  toastMsgPre: "الإصدار المباشر من",
+  toastMsgSuf: "يُصقَّل حاليًا للإنتاج.",
+  toastClose: "إغلاق",
+} as const;

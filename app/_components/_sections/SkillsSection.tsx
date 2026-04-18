@@ -1,7 +1,11 @@
+"use client";
+
+import type { Translations } from "@/app/translations";
+
 const skillCategories = [
   {
     category: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "React Native"],
+    skills: ["React", "Next.js", "Electron", "React Native"],
   },
   {
     category: "State & Data",
@@ -21,7 +25,7 @@ const skillCategories = [
   },
   {
     category: "Engineering Core",
-    skills: ["Python", "Java", "C++", "C#", "Assembly"],
+    skills: ["TypeScript", "Python", "Java", "C++", "C#"],
   },
   {
     category: "Approach",
@@ -34,7 +38,18 @@ const skillCategories = [
   },
 ];
 
-export function SkillsSection() {
+interface SkillsSectionProps {
+  t: {
+    sideLabel: string;
+    heading1: string;
+    heading2: string;
+    categories: Record<string, string>;
+  };
+}
+
+export function SkillsSection({ t }: SkillsSectionProps) {
+  const s = t;
+
   return (
     <section
       id="skills"
@@ -44,20 +59,24 @@ export function SkillsSection() {
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           <div className="lg:w-1/4">
             <div className="text-[11px] tracking-widest uppercase text-[var(--fontColor2)] sticky top-32">
-              Capabilities
+              {s.sideLabel}
             </div>
           </div>
           <div className="lg:w-3/4">
             <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-20 leading-tight">
-              Core technical
+              {s.heading1}
               <br />
-              expertise.
+              {s.heading2}
             </h2>
             <div className="grid sm:grid-cols-4 gap-x-20 gap-y-16">
               {skillCategories.map((category, index) => (
                 <div key={index}>
                   <h3 className="text-sm tracking-widest text-[var(--fontColor2)] mb-6 uppercase">
-                    {category.category}
+                    {
+                      s.categories[
+                        category.category as keyof typeof s.categories
+                      ]
+                    }
                   </h3>
                   <ul className="space-y-3">
                     {category.skills.map((skill, skillIndex) => (

@@ -9,5 +9,13 @@ export interface Project {
   link?: string;
   githubUrl?: string;
   figmaUrl?: string;
+  downloadUrl?: string;
   isFinished: boolean;
+  ar?: {
+    title?: string;
+    description?: string;
+    problem?: string;
+    solution?: string;
+    impact?: string;
+  };
 }

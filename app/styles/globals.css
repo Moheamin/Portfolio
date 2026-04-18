@@ -1,27 +1,83 @@
 @import "tailwindcss";
 
+/* ── Tailwind utility colour tokens ────────────────────────────────────── */
+@theme {
+  --color-card: #16161a;
+  --color-secondary: #1c1c21;
+  --color-accent: #00bcd4;
+}
+
 @layer base {
   html {
     @apply antialiased;
-    font-size: 80%; /* Force a standard starting point */
+    font-size: 80%;
+    color-scheme: dark;
   }
+
+  html.light {
+    color-scheme: light;
+  }
+
   body {
     font-family: "var(--font-inter)", sans-serif;
-    /* This ensures it maps to your variable if using Next.js fonts */
     font-feature-settings: "overline" 0;
+  }
+
+  /*
+    Only activate the colour transition while the theme is actually switching.
+    The [data-theme-transitioning] attribute is added by ThemeToggle right before
+    calling setTheme() and removed 300 ms later — so hover interactions are
+    completely unaffected and feel instant as expected.
+  */
+  html[data-theme-transitioning] *,
+  html[data-theme-transitioning] *::before,
+  html[data-theme-transitioning] *::after {
+    transition:
+      color 0.25s ease,
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      fill 0.25s ease,
+      stroke 0.25s ease !important;
   }
 }
 
+/* ── Dark mode (default) ───────────────────────────────────────────────── */
 :root {
   --backgroundColor: #0c0c0e;
-
+  --background: #0c0c0e;
   --fontColor: #f5f5f5;
   --fontColor2: #a1a1a1;
   --contrastColor: #00bcd4;
+  --contrastC: #00bcd4;
+  --border: rgba(161, 161, 161, 0.18);
 }
 
+/* ── Light mode ────────────────────────────────────────────────────────── */
+html.light {
+  --backgroundColor: #f9f9fb;
+  --background: #ffffff;
+  --fontColor: #111113;
+  --fontColor2: #55555f;
+  --contrastColor: #0097a7;
+  --contrastC: #0097a7;
+  --border: rgba(17, 17, 19, 0.14);
+
+  /* Tailwind utility tokens override */
+  --color-card: #ffffff;
+  --color-secondary: #f0f0f5;
+  --color-accent: #0097a7;
+}
+
+/* ── Selection ─────────────────────────────────────────────────────────── */
 
 ::selection {
-  background-color: white;
-  color: black;
+  background-color: #0097a7;
+  color: #fff;
+}
+
+/* ── Arabic font stack ─────────────────────────────────────────────────── */
+html[lang="ar"] body {
+  font-family:
+    "Segoe UI", Tahoma, "Arabic Transparent", "Traditional Arabic",
+    "Noto Sans Arabic", system-ui, sans-serif;
 }

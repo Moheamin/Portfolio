@@ -2,10 +2,27 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Download } from "lucide-react";
+import { ThemeToggle } from "@/app/_components/_ui/ThemeToggle";
+import { LanguageToggle } from "@/app/_components/_ui/LanguageToggle";
+import type { Translations, Locale } from "@/app/translations";
 
-export default function Navbar() {
+interface NavbarProps {
+  t: Record<string, string>;
+  lang: Locale;
+}
+
+export default function Navbar({ t, lang }: NavbarProps) {
   const [activeSection, setActiveSection] = useState("hero");
+  const [isWindows, setIsWindows] = useState(false);
   const SECTIONS = ["hero", "about", "projects", "skills", "contact"];
+
+  useEffect(() => {
+    setIsWindows(
+      /Win/i.test(navigator.userAgent) &&
+        !/Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent),
+    );
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -72,14 +89,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--background)] text-[var(--fontColor)] shadow-md backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-(--background) text-(--fontColor) shadow-md backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 py-4 sm:py-6">
         <div className="flex items-center justify-between">
           <div>
             <Link
               href="#hero"
               onClick={() => scrollToSection("hero")}
-              className="text-xs sm:text-base tracking-tight text-[var(--fontColor)] hover:text-[var(--contrastColor)] transition-colors duration-300"
+              className="text-xs sm:text-base tracking-tight text-(--fontColor) hover:text-(--contrastColor) transition-colors duration-300"
             >
               MR
             </Link>
@@ -88,61 +105,78 @@ export default function Navbar() {
           <ul className="flex gap-4 sm:gap-6 lg:gap-10">
             <li
               className={
-                activeSection === "about" ? "text-[var(--contrastColor)]" : ""
+                activeSection === "about" ? "text-(--contrastColor)" : ""
               }
             >
               <Link
                 href="#about"
                 onClick={() => scrollToSection("about")}
-                className="text-xs sm:text-base lg:text-base hover:text-[var(--contrastColor)] transition-colors duration-300"
+                className="text-xs sm:text-base lg:text-base hover:text-(--contrastColor) transition-colors duration-300"
               >
-                About
+                {t.about}
               </Link>
             </li>
 
             <li
               className={
-                activeSection === "projects"
-                  ? "text-[var(--contrastColor)]"
-                  : ""
+                activeSection === "projects" ? "text-(--contrastColor)" : ""
               }
             >
               <Link
                 href="#projects"
                 onClick={() => scrollToSection("projects")}
-                className="text-xs sm:text-base lg:text-base hover:text-[var(--contrastColor)] transition-colors duration-300"
+                className="text-xs sm:text-base lg:text-base hover:text-(--contrastColor) transition-colors duration-300"
               >
-                Projects
+                {t.projects}
               </Link>
             </li>
 
             <li
               className={
-                activeSection === "skills" ? "text-[var(--contrastColor)]" : ""
+                activeSection === "skills" ? "text-(--contrastColor)" : ""
               }
             >
               <Link
                 href="#skills"
                 onClick={() => scrollToSection("skills")}
-                className="text-xs sm:text-base lg:text-base hover:text-[var(--contrastColor)] transition-colors duration-300"
+                className="text-xs sm:text-base lg:text-base hover:text-(--contrastColor) transition-colors duration-300"
               >
-                Skills
+                {t.skills}
               </Link>
             </li>
             <li
               className={
-                activeSection === "contact" ? "text-[var(--contrastColor)]" : ""
+                activeSection === "contact" ? "text-(--contrastColor)" : ""
               }
             >
               <Link
                 href="#contact"
                 onClick={() => scrollToSection("contact")}
-                className="text-xs sm:text-base lg:text-base hover:text-[var(--contrastColor)] transition-colors duration-300"
+                className="text-xs sm:text-base lg:text-base hover:text-(--contrastColor) transition-colors duration-300"
               >
-                Contact
+                {t.contact}
               </Link>
             </li>
           </ul>
+
+          {/* Right-side controls */}
+          <div className="flex items-center gap-2">
+            {/* Windows-only desktop app download pill */}
+            {isWindows && (
+              <a
+                href="https://www.mediafire.com/file/afneaqkkcliz852/Portfolio-Setup.rar/file"
+                target="_blank"
+                className="group hidden sm:flex items-center gap-2 px-3 py-1.5 border border-emerald-500/25 bg-emerald-500/[0.07] hover:bg-emerald-500/15 hover:border-emerald-400/50 transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <Download className="w-3 h-3 text-emerald-400 group-hover:animate-bounce shrink-0" />
+                <span className="text-[9px] font-bold tracking-widest uppercase text-emerald-400 group-hover:text-emerald-300 transition-colors whitespace-nowrap">
+                  {t.desktopApp}
+                </span>
+              </a>
+            )}
+            <LanguageToggle lang={lang} />
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </nav>

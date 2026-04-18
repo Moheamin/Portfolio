@@ -1,12 +1,10 @@
-import Footer from "@/app/_components/_layout/Footer";
-import Navbar from "@/app/_components/_layout/Navbar";
+import { ThemeProvider } from "@/app/_components/_ui/ThemeProvider";
 import { inter } from "@/app/_lib/action";
 import { ReactNode } from "react";
 import { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import type { Viewport } from "next";
-import "./styles/globals.css";
-
+import "@/app/styles/globals.css";
 type LayoutProps = {
   children: ReactNode;
 };
@@ -139,184 +137,27 @@ export const viewport: Viewport = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="bg-[var(--backgroundColor)] font-inter text-[var(--fontColor)]">
-        {/* Elegant Toast Configuration */}
-        <Toaster
-          position="bottom-right"
-          toastOptions={{
-            duration: 4000,
-            style: {
-              background: "var(--backgroundColor)",
-              color: "var(--fontColor)",
-              border: "1px solid rgba(var(--fontColor2-rgb), 0.15)",
-              fontSize: "14px",
-              borderRadius: "12px",
-              padding: "12px 20px",
-            },
-          }}
-        />
-        <Navbar />
-        <main className="w-full overflow-x-hidden">{children}</main>
-        <Footer />
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <body className="bg-(--backgroundColor) font-inter text-(--fontColor)">
+        <ThemeProvider>
+          {/* Elegant Toast Configuration */}
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              duration: 4000,
+              style: {
+                background: "var(--backgroundColor)",
+                color: "var(--fontColor)",
+                border: "1px solid rgba(161,161,161,0.15)",
+                fontSize: "14px",
+                borderRadius: "12px",
+                padding: "12px 20px",
+              },
+            }}
+          />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
 }
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   // JSON-LD Structured Data for SEO
-//   const jsonLd = {
-//     "@context": "https://schema.org",
-//     "@type": "Person",
-//     name: "Muntadher Ahmed",
-//     jobTitle: "Front End Developer",
-//     url: "https://muntadher-ahmed.vercel.app/",
-//     image: "https://muntadher-ahmed.vercel.app/myImg.png",
-//     sameAs: [
-//       "https://github.com/Eng-Muntadher",
-//       "https://www.linkedin.com/in/muntadher-ahmed-4577b6333",
-//       "https://youtube.com/@montadherahmed340?si=SybgxoJNMJfN0STR",
-//     ],
-//     knowsAbout: [
-//       "React",
-//       "TypeScript",
-//       "Next.js",
-//       "Framer Motion",
-//       "Tailwind CSS",
-//       "JavaScript",
-//       "Web Development",
-//       "Front-end Development",
-//       "UI/UX Design",
-//     ],
-//     description:
-//       "Front-end developer specializing in React, Next.js, TypeScript, and modern web technologies.",
-//     alumniOf: {
-//       "@type": "Organization",
-//       name: "University of Baghdad, Iraq",
-//     },
-//     address: {
-//       "@type": "PostalAddress",
-//       addressLocality: "Al Diwaniyah",
-//       addressRegion: "Al-Qadisiyah",
-//       addressCountry: "IQ",
-//     },
-//   };
-
-//   // WebSite Schema for search
-//   const websiteJsonLd = {
-//     "@context": "https://schema.org",
-//     "@type": "WebSite",
-//     name: "Muntadher Ahmed Portfolio",
-//     url: "https://muntadher-ahmed.vercel.app/",
-//     description:
-//       "Front-end developer portfolio showcasing React and TypeScript projects",
-//     author: {
-//       "@type": "Person",
-//       name: "Muntadher Ahmed",
-//     },
-//     inLanguage: "en-US",
-//   };
-
-//   return (
-//     <html lang="en" suppressHydrationWarning>
-//       <head>
-//         {/* Theme Script - Prevents flash of unstyled content */}
-//         <script
-//           dangerouslySetInnerHTML={{
-//             __html: `
-//               try {
-//                 const theme = localStorage.getItem('theme') ||
-//                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-//                 document.documentElement.classList.toggle('dark', theme === 'dark');
-//               } catch {}
-//             `,
-//           }}
-//         />
-
-//         {/* JSON-LD Structured Data - Person Schema */}
-//         <script
-//           type="application/ld+json"
-//           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-//         />
-
-//         {/* JSON-LD Structured Data - WebSite Schema */}
-//         <script
-//           type="application/ld+json"
-//           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-//         />
-//       </head>
-//       <body>
-//         <NavBar />
-//         <main className="mt-12 px-20 max-xl:px-8 max-md:px-6">{children}</main>
-//         <Footer />
-
-//         <Toaster
-//           position="top-center"
-//           reverseOrder={false}
-//           gutter={8}
-//           toastOptions={{
-//             // Default options for all toasts
-//             duration: 4000,
-//             style: {
-//               background: "#fff",
-//               color: "#363636",
-//               padding: "16px 20px",
-//               borderRadius: "12px",
-//               fontSize: "15px",
-//               fontWeight: "500",
-//               boxShadow:
-//                 "0 10px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1)",
-//               maxWidth: "420px",
-//               border: "1px solid rgba(0, 0, 0, 0.05)",
-//             },
-
-//             // Success toast styles
-//             success: {
-//               duration: 4000,
-//               style: {
-//                 background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-//                 color: "#ffffff",
-//                 padding: "18px 24px",
-//                 borderRadius: "12px",
-//                 fontSize: "15px",
-//                 fontWeight: "500",
-//                 boxShadow:
-//                   "0 10px 25px rgba(16, 185, 129, 0.3), 0 4px 10px rgba(16, 185, 129, 0.2)",
-//                 border: "1px solid rgba(255, 255, 255, 0.1)",
-//               },
-//               iconTheme: {
-//                 primary: "#ffffff",
-//                 secondary: "#10b981",
-//               },
-//             },
-
-//             // Error toast styles
-//             error: {
-//               duration: 5000,
-//               style: {
-//                 background: "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)",
-//                 color: "#ffffff",
-//                 padding: "18px 24px",
-//                 borderRadius: "12px",
-//                 fontSize: "15px",
-//                 fontWeight: "500",
-//                 boxShadow:
-//                   "0 10px 25px rgba(239, 68, 68, 0.3), 0 4px 10px rgba(239, 68, 68, 0.2)",
-//                 border: "1px solid rgba(255, 255, 255, 0.1)",
-//               },
-//               iconTheme: {
-//                 primary: "#ffffff",
-//                 secondary: "#ef4444",
-//               },
-//             },
-//           }}
-//         />
-//       </body>
-//     </html>
-//   );
-// }
